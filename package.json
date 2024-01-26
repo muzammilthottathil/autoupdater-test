@@ -2,7 +2,7 @@
     "private": true,
     "name": "autoupdater-with-name-change",
     "description": "Check Autoupdater App",
-    "version": "1.0.3",
+    "version": "1.0.0",
     "author": "Muzammil Thottathil",
     "main": "app/background.js",
     "scripts": {
