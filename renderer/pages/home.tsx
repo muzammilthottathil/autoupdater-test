@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
 export default function HomePage() {
-    const [message, setMessage] = useState<string[]>([]);
-
+    const [message, setMessage] = useState<[string, string][]>([]);
     const [version, setVersion] = useState<string>("");
 
     const getAppVersion = async () => {
@@ -13,7 +12,7 @@ export default function HomePage() {
 
     useEffect(() => {
         window.ipc?.on("auto-updater", (data) => {
-            setMessage((prev) => [...prev, `[${new Date().toUTCString()}] : ${data}`]);
+            setMessage((prev) => [...prev, [new Date().toUTCString(), `${data}`]]);
         });
 
         getAppVersion();
@@ -35,7 +34,8 @@ export default function HomePage() {
                     <ul className="text-xs font-mono font-light text-gray-300 divide-y divide-gray-700">
                         {message.map((msg, i) => (
                             <li key={i} className="py-1.5">
-                                {msg}
+                                <span className="text-gray-500">{msg[0]} : </span>
+                                {msg[1]}
                             </li>
                         ))}
                     </ul>
