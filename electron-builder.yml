@@ -1,12 +1,15 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: com.muzi.checkautoupdater
+productName: CheckAutoUpdater
+copyright: Copyright © 2023 Muzammil Thottathil
 directories:
-  output: dist
-  buildResources: resources
+    output: dist
+    buildResources: resources
 files:
-  - from: .
-    filter:
-      - package.json
-      - app
-publish: null
+    - from: .
+      filter:
+          - package.json
+          - app
+publish:
+    provider: github
+    owner: muzammilthottathil
+    repo: autoupdater-test
