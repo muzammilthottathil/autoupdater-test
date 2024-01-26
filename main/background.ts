@@ -56,18 +56,17 @@ autoUpdater.on("update-available", () => {
     mainWindow.webContents.send("auto-updater", "Update Available");
 });
 
-function formatData(sizeInKB: number, isSpeed: boolean = false): string {
-    if (sizeInKB < 0) {
+function formatData(sizeInByte: number, isSpeed: boolean = false): string {
+    if (sizeInByte < 0) {
         return "Invalid " + (isSpeed ? "speed" : "size");
     }
 
-    if (sizeInKB < 1024) {
-        return sizeInKB.toFixed(2) + " KB" + (isSpeed ? "/s" : "");
-    } else if (sizeInKB < 1048576) {
-        // 1024 * 1024
-        return (sizeInKB / 1024).toFixed(2) + " MB" + (isSpeed ? "/s" : "");
+    if (sizeInByte < 1024) {
+        return sizeInByte.toFixed(2) + " B" + (isSpeed ? "/s" : "");
+    } else if (sizeInByte < 1024 * 1024) {
+        return (sizeInByte / 1024).toFixed(2) + " KB" + (isSpeed ? "/s" : "");
     } else {
-        return (sizeInKB / 1048576).toFixed(2) + " GB" + (isSpeed ? "/s" : "");
+        return (sizeInByte / (1024 * 1024)).toFixed(2) + " MB" + (isSpeed ? "/s" : "");
     }
 }
 
